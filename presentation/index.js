@@ -68,22 +68,6 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition} bgColor="primary">
           <Heading size={1} textColor="tertiary">
-            npm Downloads
-          </Heading>
-          <Layout>
-            <Image src={images.npmStats} height="454px" />
-          </Layout>
-          <Layout>
-            <Text>
-              <Link href="https://npm-stat.com/charts.html?package=react&package=vue&package=angular&from=2014-01-01">
-                npm-stat.com
-              </Link>
-            </Text>
-          </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition} bgColor="primary">
-          <Heading size={1} textColor="tertiary">
             Google Trends
           </Heading>
           <Layout>

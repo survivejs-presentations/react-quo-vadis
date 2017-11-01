@@ -99,7 +99,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                Universal Component Systems! Example:{" "}
+                Universal component systems! Example:{" "}
                 <Link href="https://github.com/lelandrichardson/react-primitives">
                   react-primitives
                 </Link>

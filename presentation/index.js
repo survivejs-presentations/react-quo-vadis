@@ -40,6 +40,7 @@ require("./custom.css");
 const slideTransition = ["slide"];
 const images = mapValues(
   {
+    googleTrends: require("../images/google-trends.png"),
     npmStats: require("../images/npm-stats.png"),
     survivejs: require("../images/survivejs.png"),
   },
@@ -76,6 +77,22 @@ export default class Presentation extends React.Component {
             <Text>
               <Link href="https://npm-stat.com/charts.html?package=react&package=vue&package=angular&from=2014-01-01">
                 npm-stat.com
+              </Link>
+            </Text>
+          </Layout>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="primary">
+          <Heading size={1} textColor="tertiary">
+            Google Trends
+          </Heading>
+          <Layout>
+            <Image src={images.googleTrends} width="754px" />
+          </Layout>
+          <Layout>
+            <Text>
+              <Link href="https://trends.google.com/trends/explore?date=2014-01-01%202017-11-01&q=%2Fm%2F012l1vxv,%2Fm%2F0j45p7w">
+                Google Trends
               </Link>
             </Text>
           </Layout>

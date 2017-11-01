@@ -209,7 +209,7 @@ export default class Presentation extends React.Component {
                 <Link href="https://www.npmjs.com/package/mobx">MobX</Link>,{" "}
                 <Link href="https://www.npmjs.com/package/mobx-state-tree">
                   mobx-state-tree
-                </Link>
+                </Link>, state machines
               </ListItem>
             </Appear>
           </List>

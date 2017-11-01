@@ -22,8 +22,8 @@ import {
   Table,
   TableRow,
   TableHeaderItem,
-  TableItem
-  //Text
+  TableItem,
+  Text,
 } from "spectacle";
 
 // Import image preloader util
@@ -38,9 +38,13 @@ require("spectacle/lib/themes/default/index.css");
 require("./custom.css");
 
 const slideTransition = ["slide"];
-const images = mapValues({
-  survivejs: require("../images/survivejs.png")
-}, (v) => v.replace("/", ""));
+const images = mapValues(
+  {
+    npmStats: require("../images/npm-stats.png"),
+    survivejs: require("../images/survivejs.png"),
+  },
+  v => v.replace("/", "")
+);
 
 preloader(images);
 
@@ -48,7 +52,7 @@ const theme = createTheme({
   primary: "white",
   secondary: "black",
   tertiary: "#09b5c4",
-  quartenary: "rgba(255, 219, 169, 0.43)"
+  quartenary: "rgba(255, 219, 169, 0.43)",
 });
 
 export default class Presentation extends React.Component {
@@ -57,149 +61,252 @@ export default class Presentation extends React.Component {
       <Deck transition={slideTransition} transitionDuration={500} theme={theme}>
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
-            Template
+            React - Quo Vadis
           </Heading>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading caps fit size={1}>
-            JavaScript Usage on Sites
-          </Heading>
-          <Markdown>
-        {`
-* 2011 - 38.2%
-* 2013 - 60.4%
-* 2015 - 70.5%
-* 2016 - 73.5%
-* Source: [W3Techs](http://w3techs.com/technologies/history_overview/javascript_library/all/y)
-        `}
-          </Markdown>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Appear fid="1">
-            <Heading size={2} caps fit>
-              Inline JavaScript
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={2} caps fit textColor="tertiary">
-              AJAX (async)
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={2} caps fit>
-              Single Page Applications
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={2} caps fit textColor="tertiary">
-              Universal JavaScript
-            </Heading>
-          </Appear>
-        </Slide>
-
-        <Slide transition={slideTransition} bgColor="black">
-          <BlockQuote>
-            <Quote>Java is to JavaScript as car is to carpet</Quote>
-          </BlockQuote>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading caps fit size={1}>
-            Build Tools
+        <Slide transition={slideTransition} bgColor="primary">
+          <Heading size={1} textColor="tertiary">
+            npm Downloads
           </Heading>
           <Layout>
-            <Table>
-              <thead>
-                <TableRow>
-                  <TableHeaderItem>1st Gen.</TableHeaderItem>
-                  <TableHeaderItem>2nd Gen.</TableHeaderItem>
-                  <TableHeaderItem>3rd Gen.</TableHeaderItem>
-                </TableRow>
-              </thead>
-              <tbody>
-                <TableRow>
-                  <TableItem>Make</TableItem>
-                  <TableItem>Grunt</TableItem>
-                  <TableItem>Browserify</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem />
-                  <TableItem>Gulp</TableItem>
-                  <TableItem>Webpack</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem />
-                  <TableItem>Broccoli</TableItem>
-                  <TableItem>JSPM</TableItem>
-                </TableRow>
-              </tbody>
-            </Table>
+            <Image src={images.npmStats} height="454px" />
+          </Layout>
+          <Layout>
+            <Text>
+              <Link href="https://npm-stat.com/charts.html?package=react&package=vue&package=angular&from=2014-01-01">
+                npm-stat.com
+              </Link>
+            </Text>
           </Layout>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
-            The Problem of Template
-          </Heading>
+          <Heading size={1}>Components</Heading>
           <List>
-            <Appear><ListItem>Problem 1</ListItem></Appear>
-            <Appear><ListItem>Problem 2</ListItem></Appear>
-            <Appear><ListItem><Link href="https://facebook.github.io/flux/">Flux</Link> - Actions, stores, dispatcher</ListItem></Appear>
+            <Appear>
+              <ListItem>
+                <code>React.createClass</code>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <code>extends Component</code>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Functions</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Universal Component Systems! Example:{" "}
+                <Link href="https://github.com/lelandrichardson/react-primitives">
+                  react-primitives
+                </Link>
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Image src={images.survivejs} margin="40px auto" height="324px" />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Solution
-          </Heading>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={4}>
-            Minimal Demo
-          </Heading>
-          <CodePane
-            lang="jsx"
-            source={require("raw-loader!../examples/demo.jsx")}
-            margin="20px auto"
-          />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={1}>
-            Exercises
+          <Heading size={1} fit>
+            From ad hoc Components to Style Guides
           </Heading>
           <List>
-            <Appear><ListItem>Exercise 1</ListItem></Appear>
-            <Appear><ListItem>*Exercise 2</ListItem></Appear>
-            <Appear><ListItem>**Exercise 3</ListItem></Appear>
+            <Appear>
+              <ListItem>
+                No style guide, no pressure to standardize style
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://storybook.js.org/">Storybook</Link>,{" "}
+                <Link href="https://react-styleguidist.js.org/">
+                  React Styleguidist
+                </Link>, <Link href="https://www.catalog.style/">Catalog</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>React specific IDEs and tooling</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Bridging React with designers. Example:{" "}
+                <Link href="http://airbnb.io/react-sketchapp/">
+                  react-sketchapp
+                </Link>
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Styling</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                <u>
+                  Styling isn't a first class citizen in React (exception: RN)
+                </u>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <code>className="foo bar"</code>, poor coupling
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <code>{"className={styles.demo}"}</code>, better coupling
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <b>CSS Modules</b> as a first step
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <b>css-in-js</b> as the next step for apps.{" "}
+                <Link href="https://www.npmjs.com/package/styled-components">
+                  styled-components
+                </Link>{" "}
+                and dozens of others
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>State Management</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                <Link href="https://www.npmjs.com/package/redux">
+                  Redux
+                </Link>{" "}
+                won?
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Abstractions over Redux. Example:{" "}
+                <Link href="https://kea.js.org/">Kea</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Do <b>not</b> cargocult
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>The right solution depends on the context</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Options: no state manager,{" "}
+                <Link href="https://cerebraljs.com/">Cerebral</Link>,{" "}
+                <Link href="https://www.npmjs.com/package/mobx">MobX</Link>,{" "}
+                <Link href="https://www.npmjs.com/package/mobx-state-tree">
+                  mobx-state-tree
+                </Link>
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>API Communication</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                <code>fetch</code> and co.?
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                GraphQL, look into{" "}
+                <Link href="https://facebook.github.io/relay/">Relay</Link> and{" "}
+                <Link href="https://www.apollographql.com/">Apollo</Link>
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Type Systems</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                <Link href="https://www.npmjs.com/package/prop-types">
+                  prop-types
+                </Link>?
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://flow.org/">Flow</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://www.typescriptlang.org/">TypeScript</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://reasonml.github.io/">Reason</Link>
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Web Components</Heading>
+          <List>
+            <Appear>
+              <ListItem>Huge amount of fragmentation</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Web Components to rescue?</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>The current specification is broken</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>I expect a fragmented future (short term)</ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Beyond Web</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                <Link href="https://facebook.github.io/react-vr/">
+                  React VR
+                </Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://www.npmjs.com/package/react-hardware">
+                  react-hardware
+                </Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>React renderers anywhere</ListItem>
+            </Appear>
           </List>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Link href="https://www.survivejs.com/">
-            <Heading size={1}>
-              SurviveJS
-            </Heading>
+            <Heading size={1}>SurviveJS</Heading>
           </Link>
-          <Image src={images.survivejs} margin="0px auto 40px" height="524px"/>
-        </Slide>
-
-        <Slide transition={slideTransition} bgColor="tertiary">
-          <Heading size={1} caps fit textColor="primary">
-            Made in Finland by
-          </Heading>
-          <Link href="https://twitter.com/bebraw">
-            <Heading caps fit size={2} textColor="secondary">
-              Juho Vepsäläinen
-            </Heading>
-          </Link>
+          <Image src={images.survivejs} margin="0px auto 40px" height="524px" />
         </Slide>
       </Deck>
     );

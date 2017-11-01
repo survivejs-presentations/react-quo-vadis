@@ -41,7 +41,6 @@ const slideTransition = ["slide"];
 const images = mapValues(
   {
     googleTrends: require("../images/google-trends.png"),
-    npmStats: require("../images/npm-stats.png"),
     survivejs: require("../images/survivejs.png"),
   },
   v => v.replace("/", "")

@@ -5,9 +5,9 @@ import mapValues from "lodash/mapValues";
 // Import Spectacle Core tags
 import {
   Appear,
-  BlockQuote,
+  // BlockQuote,
   //Cite,
-  CodePane,
+  // CodePane,
   Deck,
   //Fill,
   Heading,
@@ -16,13 +16,13 @@ import {
   Link,
   List,
   ListItem,
-  Markdown,
-  Quote,
+  // Markdown,
+  // Quote,
   Slide,
-  Table,
-  TableRow,
-  TableHeaderItem,
-  TableItem,
+  // Table,
+  // TableRow,
+  // TableHeaderItem,
+  // TableItem,
   Text,
 } from "spectacle";
 
@@ -224,9 +224,15 @@ export default class Presentation extends React.Component {
               </ListItem>
             </Appear>
             <Appear>
+              <ListItem>GraphQL</ListItem>
+            </Appear>
+            <Appear>
               <ListItem>
-                GraphQL, look into{" "}
-                <Link href="https://facebook.github.io/relay/">Relay</Link> and{" "}
+                <Link href="https://facebook.github.io/relay/">Relay</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
                 <Link href="https://www.apollographql.com/">Apollo</Link>
               </ListItem>
             </Appear>
@@ -256,6 +262,61 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>
                 <Link href="https://reasonml.github.io/">Reason</Link>
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Performance</Heading>
+          <List>
+            <Appear>
+              <ListItem>New rendering pipeline in React 16</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Asynchronous rendering and different priorities
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Important for animation!</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <code>import().then(...)</code> to split
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>Server Side Rendering</Heading>
+          <List>
+            <Appear>
+              <ListItem>Still a hard problem</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Abstractions:{" "}
+                <Link href="https://www.npmjs.com/package/next">Next.js</Link>,{" "}
+                <Link href="https://www.npmjs.com/package/react-snap">
+                  react-snap
+                </Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Static site generators:{" "}
+                <Link href="https://www.npmjs.com/package/gatsby">Gatsby</Link>,{" "}
+                <Link href="https://www.npmjs.com/package/phenomic">
+                  Phenomic
+                </Link>,{" "}
+                <Link href="https://www.npmjs.com/package/antwar">Antwar</Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                React 16 provides <code>renderToStaticStream</code>
               </ListItem>
             </Appear>
           </List>
